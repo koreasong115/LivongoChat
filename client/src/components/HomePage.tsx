@@ -25,7 +25,7 @@ export default function HomePage(props: any) {
           },
           {
             backgroundColor: "rgb(156, 196, 76)",
-            text: "quickbuild site by",
+            text: "one night site by",
             image: require("../images/earth.png"),
           },
           {

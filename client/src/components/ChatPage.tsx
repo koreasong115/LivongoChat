@@ -155,7 +155,7 @@ export default function ChatPage() {
             multiline
             disabled={true}
             rows={35}
-            placeholder="Test"
+            placeholder="Empty Message History"
             InputLabelProps={{
               shrink: true,
             }}
