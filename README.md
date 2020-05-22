@@ -2,8 +2,8 @@
 A one night project for fun 
 
 # Tech Stack
-1. Java, Postgres, Springboot
-2. React, Material UI, Styled Components, Typescript
+1. `Java, Postgres, Springboot`
+2. `React, Material UI, Styled Components, Typescript`
 
 # How to install and run the backend
 1. `cd server`
