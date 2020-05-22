@@ -1,7 +1,7 @@
 import React from "react";
 import Welcome from "react-welcome-page";
 import { Provider, Heading } from "rebass";
-import { Hero, ScrollDownIndicator, CallToAction } from "react-landing-page";
+import { Hero, CallToAction } from "react-landing-page";
 
 export default function HomePage(props: any) {
   return (

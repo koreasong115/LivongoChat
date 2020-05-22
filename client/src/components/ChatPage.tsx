@@ -54,17 +54,6 @@ export default function ChatPage() {
     return `${name} (${date}): ${text}\n\n`;
   };
 
-  const formatMessages = (msgs: Message[]) => {
-    msgs.sort((msg1, msg2) => {
-      return msg2.created - msg1.created;
-    });
-
-    const formedMsgs = msgs.map((post: any) => {
-      return formatMessage(post);
-    });
-    return formedMsgs.join('');
-  };
-
   useEffect(() => {
     const onLoad = async () => {
       const res = await fetch(`/api/message`);
@@ -74,6 +63,17 @@ export default function ChatPage() {
     };
 
     onLoad();
+
+    const formatMessages = (msgs: Message[]) => {
+      msgs.sort((msg1, msg2) => {
+        return msg2.created - msg1.created;
+      });
+
+      const formedMsgs = msgs.map((post: any) => {
+        return formatMessage(post);
+      });
+      return formedMsgs.join("");
+    };
   }, []);
 
   const handleNameChange = (event: any) => {
