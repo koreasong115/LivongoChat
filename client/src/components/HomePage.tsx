@@ -1,8 +1,7 @@
 import React from "react";
 import Welcome from "react-welcome-page";
-import { Provider, Heading, Subhead } from "rebass";
+import { Provider, Heading } from "rebass";
 import { Hero, ScrollDownIndicator, CallToAction } from "react-landing-page";
-import { Parallax } from "react-scroll-parallax";
 
 export default function HomePage(props: any) {
   return (
@@ -43,11 +42,10 @@ export default function HomePage(props: any) {
             bg="none"
             backgroundImage="https://res.cloudinary.com/diayu6wis/image/upload/v1588828715/basic_uuobeu.jpg"
           >
-            <Heading>Ryun's big bang bucks</Heading>
+            <Heading>Hello Livongo to the Home Page with ZERO CONTENT!</Heading>
             <CallToAction href="/about" mt={3}>
               Get Started
             </CallToAction>
-            <ScrollDownIndicator />
           </Hero>
         </Provider>
     </>
