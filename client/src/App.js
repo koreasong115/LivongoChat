@@ -1,12 +1,22 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
+import React, { Component } from 'react'
+import HomePage from './components/HomePage'
+import AboutPage from './components/AboutPage'
+import NotFoundPage from './components/NotFoundPage'
+import { useRoutes } from "hookrouter";
+import { ParallaxProvider } from 'react-scroll-parallax'
 
-function App() {
+const routes = {
+  "/": () => <HomePage />,
+  "/about": () => <AboutPage />,
+};
+
+export default function App() {
+  const routeResult = useRoutes(routes);
+
   return (
-    <div className="App">
-        <Button>TEST</Button>
-    </div>
-  );
-}
+    <ParallaxProvider>
+      {routeResult || <NotFoundPage />}
+    </ParallaxProvider>
+  )
 
-export default App;
+}
