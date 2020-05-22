@@ -10,12 +10,14 @@ A one night project for fun
 2. `mvn clean install`
 3. `docker-compose build`
 4. `docker-compose up`
+
 Now the springboot backend application and postgres database should be up and running
 
 # How to install and run the frontend
 1. `cd client`
 2. `yarn install` or `npm install`
 3. `yarn start` or `npm start`
+
 Now the front end React application should be up and running
 
 # How it works
