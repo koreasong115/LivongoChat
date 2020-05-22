@@ -4,7 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { Wave } from "react-animated-text";
 
 const WelcomeHeader = styled(Typography)`
   margin: 2rem;
@@ -36,23 +35,42 @@ const SendButton = styled(Button)`
 `;
 
 type Message = {
-  text: string;
+  message: string;
   name: string;
-  date: number;
+  created: number;
   id: number;
 };
 
 export default function ChatPage() {
+  const [formattedMessages, setFormattedMessages] = useState("");
   const [messages, setMessages] = useState([] as Message[]);
   const [currentMessage, setCurrentMessage] = useState("");
   const [currentName, setCurrentName] = useState("");
+
+  const formatMessage = (post: Message) => {
+    const name = post.name;
+    const date = new Date(post.created).toLocaleString();
+    const text = post.message;
+    return `${name} (${date}): ${text}\n\n`;
+  };
+
+  const formatMessages = (msgs: Message[]) => {
+    msgs.sort((msg1, msg2) => {
+      return msg2.created - msg1.created;
+    });
+
+    const formedMsgs = msgs.map((post: any) => {
+      return formatMessage(post);
+    });
+    return formedMsgs.join('');
+  };
 
   useEffect(() => {
     const onLoad = async () => {
       const res = await fetch(`/api/message`);
       const json = await res.json();
       setMessages(json);
-      console.log(json);
+      setFormattedMessages(formatMessages(json));
     };
 
     onLoad();
@@ -72,7 +90,6 @@ export default function ChatPage() {
       message: currentMessage,
     };
 
-    console.log(JSON.stringify(body))
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -84,7 +101,10 @@ export default function ChatPage() {
       headers: headers,
     });
     const json = await res.json();
-    console.log(json);
+    messages.unshift(json);
+    setFormattedMessages(formatMessage(json) + formattedMessages);
+    setCurrentMessage("");
+    return json;
   };
 
   return (
@@ -105,6 +125,7 @@ export default function ChatPage() {
             inputProps={{ maxLength: 25 }}
             variant="outlined"
             onChange={handleNameChange}
+            value={currentName}
           />
           <InputBox
             id="input-box"
@@ -116,6 +137,7 @@ export default function ChatPage() {
             inputProps={{ maxLength: 100 }}
             variant="outlined"
             onChange={handleMessageChange}
+            value={currentMessage}
           />
           <SendButton
             onClick={handleSend}
@@ -133,10 +155,11 @@ export default function ChatPage() {
             multiline
             disabled={true}
             rows={35}
-            placeholder="No Messages"
+            placeholder="Test"
             InputLabelProps={{
               shrink: true,
             }}
+            value={formattedMessages}
             variant="outlined"
           />
         </Grid>

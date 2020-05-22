@@ -24,11 +24,11 @@ public class Post implements Serializable {
     private Date created;
 
     @NotNull(message = "Name is required")
-    @Size(min = 3, max = 50, message = "name must be longer than 3 and less than 40 characters")
+    @Size(max = 25, message = "name must be longer than 3 and less than 40 characters")
     private String name;
 
     @NotNull(message = "Message is required")
-    @Size(max = 50, message = "message must be a max of 100 characters")
+    @Size(max = 100, message = "message must be a max of 100 characters")
     private String message;
 
     public Post() {}

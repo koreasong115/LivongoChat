@@ -11,26 +11,26 @@ export default function HomePage(props: any) {
         data={[
           {
             backgroundColor: "rgb(73, 49, 91)",
-            text: "Welcome to",
+            text: "Welcome Livongo",
             textAnimation: "slideInRight",
             imageAnimation: "flipInX",
-            image: require("../images/lux.png"),
+            image: require("../images/mountain.jpg"),
           },
           {
             backgroundColor: "rgb(252, 187, 19)",
-            text: "My App",
+            text: "this is my",
             textAnimation: "slideInLeft",
             imageAnimation: "slideInUp",
-            image: require("../images/ezreal.png"),
+            image: require("../images/garfield.png"),
           },
           {
             backgroundColor: "rgb(156, 196, 76)",
-            text: "Made By",
+            text: "quickbuild site by",
             image: require("../images/earth.png"),
           },
           {
             backgroundColor: "rgb(4, 116, 188)",
-            text: "Ryun Song",
+            text: "Ryan Song",
             textAnimation: "fadeInUp",
             image: require("../images/snowboarder.png"),
           },
