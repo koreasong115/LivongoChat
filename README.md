@@ -31,3 +31,4 @@ Since this was built in one evening + night, there are a littany of things to im
 2. There's no security/SSL, logging, nor unit testing in the backend or frontend
 3. The UI/UX itself can be improved
 4. Ensuring correct JSON data being passed
+5. Improving the Page Not Found page
