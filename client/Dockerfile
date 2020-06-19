@@ -1,11 +1,17 @@
 FROM node:14
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
-COPY . .    
-RUN npm install
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
 
 EXPOSE 3000
+
+# add app
+COPY . ./
 
 CMD ["npm", "start"]

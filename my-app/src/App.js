@@ -1,24 +1,43 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useRoutes } from "hookrouter";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Home from './components/Home'
 import About from './components/About'
 
-const routes = {
-  "/": () => <Home />,
-  "/home": () => <Home />,
-  "/about": () => <About />,
-};
-
 function App() {
-  const routeResult = useRoutes(routes);
-
   return (
-    <div>
-      {routeResult || <About />}
-    </div>
-  )
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
