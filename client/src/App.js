@@ -4,19 +4,20 @@ import ChatPage from './components/ChatPage'
 import NotFoundPage from './components/NotFoundPage'
 import { useRoutes } from "hookrouter";
 import { ParallaxProvider } from 'react-scroll-parallax'
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+const routes = {
+  "/": () => <HomePage />,
+  "/home": () => <HomePage />,
+  "/about": () => <ChatPage />,
+};
 
 export default function App() {
+  const routeResult = useRoutes(routes);
+
   return (
-    <BrowserRouter>
-
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/home" component={HomePage} />
-        <Route exact path="/about" component={ChatPage} />
-
-      </Switch>
-    </BrowserRouter>
+    <ParallaxProvider>
+      {routeResult || <NotFoundPage />}
+    </ParallaxProvider>
   )
+
 }
